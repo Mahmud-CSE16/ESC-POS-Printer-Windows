@@ -7,6 +7,9 @@ Future<void> testReceipt(
     NetworkPrinter printer,  Uint8List theimageThatC) async {
 
 
+  printer.drawer();
+  // printer.text("www.zatiq.com");
+  // printer.cut();
   final Image? image = decodeImage(theimageThatC);
   printer.image(image! , align: PosAlign.center);
 

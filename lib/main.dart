@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void testPrint(String printerIp, Uint8List theimageThatComesfr) async {
     print("im inside the test print 2");
     // TODO Don't forget to choose printer's paper size
-    const PaperSize paper = PaperSize.mm80;
+    const PaperSize paper = PaperSize.mm58;
     final profile = await CapabilityProfile.load();
     final printer = NetworkPrinter(paper, profile);
 
@@ -75,12 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
   }
-  TextEditingController Printer = TextEditingController();
+  TextEditingController printer = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("معاينة الوصل قبل الطباعة "),
+        title: Text("ESC Pos Print"),
       ),
       body: Center(
           child: ListView(
@@ -89,29 +89,27 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
-                controller: Printer,
-                decoration: InputDecoration(hintText: "printer ip"),
+                controller: printer,
+                decoration: const InputDecoration(hintText: "Printer ip"),
               ),
 
               SizedBox(
                 height: 10,
               ),
               ElevatedButton(
-                child: Text(
-                  'print res',
+                child: const Text(
+                  'Print res',
                   style: TextStyle(fontSize: 40),
                 ),
                 onPressed: () {
                   screenshotController
-                      .capture(delay: Duration(milliseconds: 10))
+                      .capture(delay: const Duration(milliseconds: 10))
                       .then((capturedImage) async {
                     theimageThatComesfromThePrinter = capturedImage!;
                     setState(() {
                       theimageThatComesfromThePrinter = capturedImage;
-                      testPrint(Printer.text, theimageThatComesfromThePrinter);
+                      testPrint(printer.text, theimageThatComesfromThePrinter);
                     });
-                  }).catchError((onError) {
-                    print(onError);
                   });
                 },
               ),
@@ -120,135 +118,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Screenshot(
                 controller: screenshotController,
-                child: Container(
-                    width: 460,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              "محمد نعم 臺灣  ",
-                              style: TextStyle(
-                                  fontSize: 50, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.center,
-                        ),
-                        Text(
-                            "----------------------------------------------------------------------------------"),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "(  汉字 )",
-                                style: TextStyle(
-                                    fontSize: 40, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "رقم الطلب",
-                                style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                          child: Text(
-                              "-------------------------------------------------------------------------------------"),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Center(
-                                child: Text(
-                                  "التفاصيل",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              flex: 6,
-                            ),
-                            Expanded(
-                              child: Center(
-                                child: Text(
-                                  "السعر ",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              flex: 2,
-                            ),
-                            Expanded(
-                              child: Center(
-                                child: Text(
-                                  "العدد",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              flex: 2,
-                            ),
-                          ],
-                        ),
-                        ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          physics: ScrollPhysics(),
-                          itemCount: 4,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        "臺灣",
-                                        style: TextStyle(fontSize: 25),
-                                      ),
-                                    ),
-                                    flex: 6,
-                                  ),
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        "تجربة عيوني انتة ",
-                                        style: TextStyle(fontSize: 25),
-                                      ),
-                                    ),
-                                    flex: 2,
-                                  ),
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        "Test My little pice of huny",
-                                        style: TextStyle(fontSize: 25),
-                                      ),
-                                    ),
-                                    flex: 2,
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                        Text(
-                            "----------------------------------------------------------------------------------"),
-                      ],
-                    )),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text("Zatiq Limited",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                    SizedBox(height: 10,),
+                    Text("Banana: 10tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                    Text("Apple: 30tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                    Text("Guava: 20tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 25,
