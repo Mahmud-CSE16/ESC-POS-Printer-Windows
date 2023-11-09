@@ -1,10 +1,10 @@
 import 'dart:typed_data';
+import 'package:esc_pos_printer/esc_pos_printer.dart';
+import 'package:esc_pos_utils_plus/esc_pos_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:printer_test_youtube/ImagestorByte.dart';
 import 'package:printer_test_youtube/printer.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:esc_pos_printer/esc_pos_printer.dart';
-import 'package:esc_pos_utils/esc_pos_utils.dart';
 import 'dart:io';
 
 void main() {
@@ -47,14 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(dir);
-     // this func to cheeck if port are close or not 
-    setState(() {
-        Process.run('$dir/images/installerX64/install.exe', [' start '])
-          .then((ProcessResult results) {
-        print("port poen");
-      });
-    });
+    // print(dir);
+    //  // this func to cheeck if port are close or not
+    // setState(() {
+    //     Process.run('$dir/images/installerX64/install.exe', [' start '])
+    //       .then((ProcessResult results) {
+    //     print("port poen");
+    //   });
+    // });
   }
   void testPrint(String printerIp, Uint8List theimageThatComesfr) async {
     print("im inside the test print 2");
@@ -118,15 +118,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Screenshot(
                 controller: screenshotController,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text("Zatiq Limited",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
-                    SizedBox(height: 10,),
-                    Text("Banana: 10tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
-                    Text("Apple: 30tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
-                    Text("Guava: 20tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
-                  ],
+                child: Container(
+                  width: 300,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text("Zatiq Limited",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                      SizedBox(height: 10,),
+                      Text("Banana: 10tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                      Text("Apple: 30tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                      Text("Guava: 20tk",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w700),),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
