@@ -92,10 +92,11 @@ packages:
   esc_pos_printer:
     dependency: "direct main"
     description:
-      name: esc_pos_printer
-      sha256: "312b05f909f3f7dd1e6a3332cf384dcee2c3a635138823654cd9c0133d8b5c45"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "81369ab9dff904a4a2e6005f862f958fec13a51e"
+      url: "https://github.com/Mahmud-CSE16/esc_pos_printer.git"
+    source: git
     version: "4.1.0"
   esc_pos_utils:
     dependency: transitive
