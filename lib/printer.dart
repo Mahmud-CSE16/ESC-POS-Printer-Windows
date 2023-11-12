@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:esc_pos_printer/esc_pos_printer.dart';
 import 'package:esc_pos_utils_plus/esc_pos_utils.dart';
+import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 
 Future<void> testReceipt(
@@ -24,14 +25,14 @@ Future<void> testReceipt(
 
   bytes += generator.drawer();
 
-  // final ByteData data = await rootBundle.load('assets/images/zatiq.webp');
-  // if (data.lengthInBytes > 0) {
-  //   final Uint8List imageBytes = data.buffer.asUint8List();
+  final ByteData data = await rootBundle.load('images/zatiq-black.webp');
+  if (data.lengthInBytes > 0) {
+    final Uint8List imageBytes = data.buffer.asUint8List();
     // decode the bytes into an image
-    final decodedImage = img.decodeImage(theimageThatC)!;
+    final decodedImage = img.decodeImage(imageBytes)!;
     // Create a black bottom layer
     // Resize the image to a 130x? thumbnail (maintaining the aspect ratio).
-    img.Image thumbnail = img.copyResize(decodedImage, height: decodedImage.height);
+    img.Image thumbnail = img.copyResize(decodedImage, height: 80);
     // creates a copy of the original image with set dimensions
     img.Image originalImg = img.copyResize(decodedImage, width: 300, height: decodedImage.height);
     // fills the original image with a white background
@@ -49,8 +50,8 @@ Future<void> testReceipt(
     bytes += generator.imageRaster(grayscaleImage, align: PosAlign.left);
     bytes += generator.feed(1);
     bytes += generator.feed(1);
-  //
-  // }
+
+  }
   // bytes += generator.row([
   //   PosColumn(text: "Mahmudul",width: 8),
   //   PosColumn(text: "Islam",width: 4)
